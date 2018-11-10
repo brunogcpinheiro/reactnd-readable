@@ -6,4 +6,4 @@ Follow the instructions to start the server!
 
 ## Install the frontend
 
-Clone this repository and run `npm start`!
+Clone this repository, run `npm install` and `npm start`!
