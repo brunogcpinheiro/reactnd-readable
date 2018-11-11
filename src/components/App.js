@@ -9,7 +9,9 @@ class App extends Component {
 		return (
 			<Router>
 				<div className="container">
-					<h1 className="title">Readable</h1>
+					<h1 className="title">
+						Read<span>able</span>
+					</h1>
 					<Nav />
 					<button className="add-post">
 						<TiDocumentAdd
