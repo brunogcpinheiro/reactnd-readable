@@ -16,29 +16,31 @@ const Card = props => {
 			<p>
 				Lorem ipsum dolor amet ennui kale chips plaid, XOXO unicorn gochujang
 				schlitz shoreditch skateboard. Pour-over artisan drinking vinegar
-				authentic woke chillwave shaman distillery blue bottle farm-to-table
-				hella asymmetrical flexitarian. Cardigan hammock selvage, prism poke
-				cliche man braid. La croix activated charcoal bicycle rights whatever
-				keytar lyft gluten-free sartorial beard lo-fi offal.
+				authentic woke chillwave shaman distillery blue bottle.
 			</p>
 			<div className="actions">
-				<a>
+				<a href="/">
 					<TiTabsOutline />
 					<small>Open</small>
 				</a>
-				<a>
+				<a href="/">
 					<TiTrash />
 					<small>Delete</small>
 				</a>
-				<a>
+				<a href="/">
 					<TiMessage /> <span>13</span> <small>Comments</small>
 				</a>
-				<a>
-					<TiThumbsUp /> <span>10</span> <small>Up</small>
-				</a>
-				<a>
-					<TiThumbsDown /> <span>2</span> <small>Down</small>
-				</a>
+				<div className="votes">
+					<a href="/">
+						<TiThumbsUp /> <small>Up</small>
+					</a>
+					<a href="/">
+						<TiThumbsDown /> <small>Down</small>
+					</a>
+					<div className="total">
+						<span>-10</span> <small>Total</small>
+					</div>
+				</div>
 			</div>
 		</div>
 	);

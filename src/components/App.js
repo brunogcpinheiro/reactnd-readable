@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Nav from './Nav';
 import Card from './Card';
 import { TiDocumentAdd } from 'react-icons/ti';
+import { TiStarFullOutline } from 'react-icons/ti';
+import { TiTime } from 'react-icons/ti';
 
 class App extends Component {
 	render () {
@@ -19,6 +21,17 @@ class App extends Component {
 						/>
 						New Post
 					</button>
+					<div className="sort">
+						<h3>Sort by</h3>
+						<a href="/">
+							<TiStarFullOutline />
+							<small>Votes</small>
+						</a>
+						<a href="/">
+							<TiTime />
+							<small>Time</small>
+						</a>
+					</div>
 					<div className="cards">
 						<Card />
 						<Card />
