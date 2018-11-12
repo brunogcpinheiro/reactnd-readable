@@ -8,7 +8,7 @@ import { TiMessage } from 'react-icons/ti';
 const Card = props => {
 	return (
 		<div className="card">
-			<h4 className="card-title">Learning React and Redux</h4>
+			<h4 className="card-title">{props.post.title}</h4>
 			<h5>( React )</h5>
 			<small>
 				by <strong>@brunocarpinelli</strong> at 06 nov 2018

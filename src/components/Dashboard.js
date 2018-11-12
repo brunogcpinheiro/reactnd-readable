@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import Post from './Post';
+import Loading from './Loading';
 
 class Dashboard extends Component {
 	render () {
@@ -8,9 +9,11 @@ class Dashboard extends Component {
 		return (
 			<Fragment>
 				<div className="cards">
-					{this.props.posts.map(post => console.log(post))}
-					<Post />
-					<Post />
+					{this.props.posts.length > 0 ? (
+						this.props.posts.map(post => <Post key={post.id} post={post} />)
+					) : (
+						<Loading />
+					)}
 				</div>
 			</Fragment>
 		);
