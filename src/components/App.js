@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Nav from './Nav';
 import Dashboard from './Dashboard';
@@ -26,12 +26,12 @@ class App extends Component {
 								Read<span>able</span>
 							</h1>
 							<Nav />
-							<button className="add-post">
+							<NavLink className="add-post" to="/new">
 								<TiDocumentAdd
 									style={{ marginRight: '16px', fontSize: '1.5rem' }}
 								/>
 								New Post
-							</button>
+							</NavLink>
 							<div className="sort">
 								<h3>Sort by</h3>
 								<a href="/">

@@ -92,8 +92,10 @@ small {
 	font-size: 1.2rem;
 	display: flex;
 	align-items: center;
+	justify-content: center;
 	margin: 50px auto;
 	transition: background 0.3s ease-out;
+	width: 150px;
 }
 
 .add-post:hover {
