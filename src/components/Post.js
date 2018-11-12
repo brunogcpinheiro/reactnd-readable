@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 import { TiThumbsUp } from 'react-icons/ti';
 import { TiThumbsDown } from 'react-icons/ti';
 import { TiTrash } from 'react-icons/ti';
@@ -6,17 +7,16 @@ import { TiTabsOutline } from 'react-icons/ti';
 import { TiMessage } from 'react-icons/ti';
 
 const Card = props => {
+	const { title, author, body, category, commentCount, timestamp, voteScore } = props.post;
 	return (
 		<div className="card">
-			<h4 className="card-title">{props.post.title}</h4>
-			<h5>( React )</h5>
+			<h4 className="card-title">{title}</h4>
+			<h5>( {category} )</h5>
 			<small>
-				by <strong>@brunocarpinelli</strong> at 06 nov 2018
+				by <strong>{author}</strong> at {moment(timestamp).format("LL")}
 			</small>
 			<p>
-				Lorem ipsum dolor amet ennui kale chips plaid, XOXO unicorn gochujang
-				schlitz shoreditch skateboard. Pour-over artisan drinking vinegar
-				authentic woke chillwave shaman distillery blue bottle.
+				{body}
 			</p>
 			<div className="actions">
 				<a href="/">
@@ -28,7 +28,7 @@ const Card = props => {
 					<small>Delete</small>
 				</a>
 				<a href="/">
-					<TiMessage /> <span>13</span> <small>Comments</small>
+					<TiMessage /> <span>{commentCount}</span> <small>Comments</small>
 				</a>
 				<div className="votes">
 					<a href="/">
@@ -38,7 +38,7 @@ const Card = props => {
 						<TiThumbsDown /> <small>Down</small>
 					</a>
 					<div className="total">
-						<span>-10</span> <small>Total</small>
+						<span>{voteScore}</span> <small>Total</small>
 					</div>
 				</div>
 			</div>
