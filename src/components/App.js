@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Nav from './Nav';
 import Dashboard from './Dashboard';
 import Loading from './Loading';
-import { TiDocumentAdd } from 'react-icons/ti';
-import { TiStarFullOutline } from 'react-icons/ti';
-import { TiTime } from 'react-icons/ti';
 import { handleGetAllPosts } from '../actions/posts';
+import { handleGetAllCategories } from '../actions/categories';
 
 class App extends Component {
 	componentDidMount () {
 		this.props.dispatch(handleGetAllPosts());
+		this.props.dispatch(handleGetAllCategories());
 	}
 
 	render () {
@@ -26,24 +25,8 @@ class App extends Component {
 								Read<span>able</span>
 							</h1>
 							<Nav />
-							<NavLink className="add-post" to="/new">
-								<TiDocumentAdd
-									style={{ marginRight: '16px', fontSize: '1.5rem' }}
-								/>
-								New Post
-							</NavLink>
-							<div className="sort">
-								<h3>Sort by</h3>
-								<a href="/">
-									<TiStarFullOutline />
-									<small>Votes</small>
-								</a>
-								<a href="/">
-									<TiTime />
-									<small>Time</small>
-								</a>
-							</div>
 							<Route path="/" exact component={Dashboard} />
+							<Route path="/:category" exact component={Dashboard} />
 						</div>
 					)}
 				</div>
@@ -52,9 +35,9 @@ class App extends Component {
 	}
 }
 
-function mapStateToProps ({ posts }) {
+function mapStateToProps ({ categories }) {
 	return {
-		loading: posts === null,
+		loading: categories === null,
 	};
 }
 

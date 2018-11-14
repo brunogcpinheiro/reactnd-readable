@@ -1,33 +1,34 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-const Nav = props => {
-	return (
-		<nav className="nav">
-			<ul>
-				<li>
-					<NavLink to="/" exact activeClassName="active">
-						All
-					</NavLink>
-				</li>
-				<li>
-					<NavLink to="/react" activeClassName="active">
-						React
-					</NavLink>
-				</li>
-				<li>
-					<NavLink to="/redux" activeClassName="active">
-						Redux
-					</NavLink>
-				</li>
-				<li>
-					<NavLink to="/udacity" activeClassName="active">
-						Udacity
-					</NavLink>
-				</li>
-			</ul>
-		</nav>
-	);
+class Nav extends Component {
+	render() {
+		const isActive = (path, match, location) => !!(match || path === location.pathname);
+		
+		return (
+			<nav className="nav">
+				<ul>
+					{this.props.categories.length > 0 ? this.props.categories.map(category => (
+						<li key={category.name}>
+							<NavLink 
+								to={category.path} 
+								activeClassName="active"
+								isActive={isActive.bind(this, category.path)}>
+								{category.name}
+							</NavLink>
+						</li>
+					)) : null}
+				</ul>
+			</nav>
+		);	
+	}
 };
 
-export default Nav;
+function mapStateToProps({ categories }) {
+	return {
+		categories
+	}
+}
+
+export default connect(mapStateToProps)(Nav);

@@ -9,6 +9,14 @@ const headers = {
 	Authorization: token,
 };
 
+export function getAllCategories () {
+	return fetch(`${api}/categories`, { headers }).then(res => res.json());
+}
+
 export function getAllPosts () {
 	return fetch(`${api}/posts`, { headers }).then(res => res.json());
+}
+
+export function getPostsByCategory (category) {
+	return fetch(`${api}/${category}/posts`, { headers }).then(res => res.json());
 }
