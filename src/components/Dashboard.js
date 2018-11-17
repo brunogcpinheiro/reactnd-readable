@@ -11,8 +11,13 @@ class Dashboard extends Component {
 		this.props.dispatch(handleGetAllPosts(this.props.category));
 	}
 
+	componentDidUpdate (prevProps) {
+		if (this.props.category !== prevProps.category) {
+			this.props.dispatch(handleGetAllPosts(this.props.category));
+		}
+	}
+
 	render () {
-		console.log(this.props);
 		return (
 			<Fragment>
 				<Actions />

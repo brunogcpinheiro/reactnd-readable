@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 
 class NewPost extends Component {
 	render () {
-		console.log(this.props);
 		return <Fragment />;
 	}
 }

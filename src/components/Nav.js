@@ -2,10 +2,13 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { handleGetAllCategories } from '../actions/categories';
+import { handleGetAllPosts } from '../actions/posts';
+import { withRouter } from 'react-router-dom';
 
 class Nav extends Component {
 	componentDidMount () {
 		this.props.dispatch(handleGetAllCategories());
+		this.props.dispatch(handleGetAllPosts(this.props.category));
 	}
 
 	render () {
@@ -27,10 +30,13 @@ class Nav extends Component {
 	}
 }
 
-function mapStateToProps ({ categories }) {
+function mapStateToProps ({ categories }, props) {
+	const { category } = props.match.params;
+
 	return {
 		categories,
+		category,
 	};
 }
 
-export default connect(mapStateToProps)(Nav);
+export default withRouter(connect(mapStateToProps)(Nav));
