@@ -5,15 +5,8 @@ import Nav from './Nav';
 import Dashboard from './Dashboard';
 import Loading from './Loading';
 import NewPost from './NewPost';
-import { handleGetAllPosts } from '../actions/posts';
-import { handleGetAllCategories } from '../actions/categories';
 
 class App extends Component {
-	componentDidMount () {
-		this.props.dispatch(handleGetAllPosts());
-		this.props.dispatch(handleGetAllCategories());
-	}
-
 	render () {
 		return (
 			<Router>

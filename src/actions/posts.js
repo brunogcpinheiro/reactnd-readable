@@ -8,9 +8,9 @@ function receivePosts (posts) {
 	};
 }
 
-export function handleGetAllPosts () {
+export function handleGetAllPosts (category) {
 	return dispatch => {
-		return getAllPosts().then(posts => {
+		return getAllPosts(category).then(posts => {
 			dispatch(receivePosts(posts));
 		});
 	};
