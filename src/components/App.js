@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Nav from './Nav';
 import Dashboard from './Dashboard';
 import Loading from './Loading';
+import NewPost from './NewPost';
 import { handleGetAllPosts } from '../actions/posts';
 import { handleGetAllCategories } from '../actions/categories';
 
@@ -26,7 +27,8 @@ class App extends Component {
 							</h1>
 							<Nav />
 							<Route path="/" exact component={Dashboard} />
-							<Route path="/:category" exact component={Dashboard} />
+							<Route path="/:category" component={Dashboard} />
+							<Route path="/new" component={NewPost} />
 						</div>
 					)}
 				</div>
