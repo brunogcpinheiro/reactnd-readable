@@ -14,11 +14,9 @@ export function getAllCategories () {
 }
 
 export function getAllPosts (category = undefined) {
-	if (category !== undefined) {
+	if (category !== undefined)
 		return fetch(`${api}/${category}/posts`, { headers }).then(res =>
 			res.json(),
 		);
-	}
-
 	return fetch(`${api}/posts`, { headers }).then(res => res.json());
 }

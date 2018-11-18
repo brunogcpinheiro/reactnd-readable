@@ -91,17 +91,28 @@ small {
 	color: #ee5253;
 	font-size: 1.2rem;
 	display: flex;
+	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	margin: 50px auto;
-	transition: background 0.3s ease-out;
-	width: 150px;
+	width: 500px;
 }
 
-.add-post:hover {
-	background: #ee5253;
-	color: #130f40;
-	transition: background 0.3s ease-in;
+.add-post-form {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	margin-top: 15px;
+}
+
+.add-post-form input {
+	background: transparent;
+	border: none;
+	border-bottom: 1px solid #ee5253;
+	outline: none;
+	color: #fff;
+	margin: 15px 0;
+	width: 100%;
 }
 
 .sort {

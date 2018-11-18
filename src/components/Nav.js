@@ -1,24 +1,23 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { handleGetAllCategories } from '../actions/categories';
-import { handleGetAllPosts } from '../actions/posts';
 import { withRouter } from 'react-router-dom';
+import { handleGetAllCategories } from '../actions/categories';
 
 class Nav extends Component {
 	componentDidMount () {
 		this.props.dispatch(handleGetAllCategories());
-		this.props.dispatch(handleGetAllPosts(this.props.category));
 	}
 
 	render () {
+		console.log(this.props);
 		return (
 			<nav className="nav">
 				<ul>
 					{this.props.categories.length > 0 ? (
 						this.props.categories.map(category => (
 							<li key={category.name}>
-								<NavLink to={category.path} activeClassName="active">
+								<NavLink exact to={`${category.path}`} activeClassName="active">
 									{category.name}
 								</NavLink>
 							</li>
@@ -31,11 +30,10 @@ class Nav extends Component {
 }
 
 function mapStateToProps ({ categories }, props) {
-	const { category } = props.match.params;
-
+	const { pathname } = props.location;
 	return {
 		categories,
-		category,
+		pathname,
 	};
 }
 
