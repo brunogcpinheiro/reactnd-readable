@@ -34,7 +34,9 @@ class Dashboard extends Component {
 				</div>
 				<div className="cards">
 					{this.props.posts.length > 0 ? (
-						this.props.posts.map(post => <Post key={post.id} post={post} />)
+						this.props.posts.map(post => (
+							<Post key={post.id} singlePost={post} />
+						))
 					) : null}
 				</div>
 				<NewPost />

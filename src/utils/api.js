@@ -20,3 +20,19 @@ export function getAllPosts (category = undefined) {
 		);
 	return fetch(`${api}/posts`, { headers }).then(res => res.json());
 }
+
+export function getPost (id) {
+	return fetch(`${api}/posts/${id}`, { headers }).then(res => res.json());
+}
+
+export function getComments (id) {
+	return fetch(`${api}/posts/${id}/comments`, { headers }).then(res =>
+		res.json(),
+	);
+}
+
+// export function deletePost (id) {
+// 	return fetch(`${api}/posts/${id}`, { method: 'DELETE', headers }).then(res =>
+// 		res.json(),
+// 	);
+// }

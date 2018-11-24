@@ -17,7 +17,8 @@ class Card extends Component {
 			commentCount,
 			timestamp,
 			voteScore,
-		} = this.props.post;
+			id,
+		} = this.props.singlePost;
 
 		return (
 			<div className="card">
@@ -28,15 +29,15 @@ class Card extends Component {
 				</small>
 				<p>{body}</p>
 				<div className="actions">
-					<a href="/">
+					<a href={`/${category}/${id}`}>
 						<TiTabsOutline />
-						<small>Open</small>
+						<small>Detail</small>
 					</a>
 					<a href="/">
 						<TiTrash />
 						<small>Delete</small>
 					</a>
-					<a href="/">
+					<a href={`/${category}/${id}`}>
 						<TiMessage /> <span>{commentCount}</span> <small>Comments</small>
 					</a>
 					<div className="votes">
@@ -56,9 +57,10 @@ class Card extends Component {
 	}
 }
 
-function mapStateToProps ({ posts }) {
+function mapStateToProps ({ posts, post }) {
 	return {
 		posts,
+		post,
 	};
 }
 
