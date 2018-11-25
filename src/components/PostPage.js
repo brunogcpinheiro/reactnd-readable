@@ -60,6 +60,9 @@ class PostPage extends Component {
 								placeholder="Type the comment body..."
 								id="body"
 							/>
+							<button type="submit" className="btn-submit">
+								Submit
+							</button>
 						</form>
 					</div>
 				</div>

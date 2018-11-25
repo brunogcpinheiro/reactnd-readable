@@ -34,6 +34,9 @@ class NewPost extends Component {
 						placeholder="Type the post body..."
 						id="body"
 					/>
+					<button type="submit" className="btn-submit">
+						Submit
+					</button>
 				</form>
 			</div>
 		);

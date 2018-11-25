@@ -125,6 +125,14 @@ small {
 	background: #130f40;
 }
 
+.btn-submit {
+	padding: 16px 24px;
+	background: #ee5253;
+	color: #130f40;
+	border: none;
+	text-transform: uppercase;
+}
+
 .sort {
 	display: flex;
 	align-items: center;
