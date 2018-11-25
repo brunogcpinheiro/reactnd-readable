@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import moment from 'moment';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { TiThumbsUp } from 'react-icons/ti';
 import { TiThumbsDown } from 'react-icons/ti';
@@ -29,24 +30,24 @@ class Card extends Component {
 				</small>
 				<p>{body}</p>
 				<div className="actions">
-					<a href={`/${category}/${id}`}>
+					<Link to={`/${category}/${id}`}>
 						<TiTabsOutline />
 						<small>Detail</small>
-					</a>
-					<a href="/">
+					</Link>
+					<Link to="/">
 						<TiTrash />
 						<small>Delete</small>
-					</a>
-					<a href={`/${category}/${id}`}>
+					</Link>
+					<Link to={`/${category}/${id}`}>
 						<TiMessage /> <span>{commentCount}</span> <small>Comments</small>
-					</a>
+					</Link>
 					<div className="votes">
-						<a href="/">
+						<Link to="/">
 							<TiThumbsUp /> <small>Up</small>
-						</a>
-						<a href="/">
+						</Link>
+						<Link to="/">
 							<TiThumbsDown /> <small>Down</small>
-						</a>
+						</Link>
 						<div className="total">
 							<span>{voteScore}</span> <small>Total</small>
 						</div>

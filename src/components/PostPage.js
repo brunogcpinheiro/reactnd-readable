@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import moment from 'moment';
 import { TiThumbsUp, TiThumbsDown } from 'react-icons/ti';
 import { handleGetPost } from '../actions/post';
@@ -31,12 +32,12 @@ class PostPage extends Component {
 								<p>{comment.body}</p>
 								<div className="actions">
 									<div className="votes">
-										<a href="/">
+										<Link to="/">
 											<TiThumbsUp />
-										</a>
-										<a href="/">
+										</Link>
+										<Link to="/">
 											<TiThumbsDown />
-										</a>
+										</Link>
 										<div className="total">
 											<span>{comment.voteScore}</span> <small>Total</small>
 										</div>
