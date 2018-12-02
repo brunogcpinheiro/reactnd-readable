@@ -7,6 +7,7 @@ import { TiThumbsDown } from 'react-icons/ti';
 import { TiTrash } from 'react-icons/ti';
 import { TiTabsOutline } from 'react-icons/ti';
 import { TiMessage } from 'react-icons/ti';
+import { handleDeletePost } from '../actions/posts';
 
 class Card extends Component {
 	render () {
@@ -34,10 +35,10 @@ class Card extends Component {
 						<TiTabsOutline />
 						<small>Detail</small>
 					</Link>
-					<Link to="/">
+					<button onClick={() => this.props.dispatch(handleDeletePost(id))}>
 						<TiTrash />
 						<small>Delete</small>
-					</Link>
+					</button>
 					<Link to={`/${category}/${id}`}>
 						<TiMessage /> <span>{commentCount}</span> <small>Comments</small>
 					</Link>

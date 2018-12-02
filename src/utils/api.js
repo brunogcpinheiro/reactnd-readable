@@ -31,8 +31,8 @@ export function getComments (id) {
 	);
 }
 
-// export function deletePost (id) {
-// 	return fetch(`${api}/posts/${id}`, { method: 'DELETE', headers }).then(res =>
-// 		res.json(),
-// 	);
-// }
+export function deletePost (id) {
+	return fetch(`${api}/posts/${id}`, { method: 'DELETE', headers }).then(res =>
+		res.json(),
+	);
+}

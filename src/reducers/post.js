@@ -1,4 +1,5 @@
 import { RECEIVE_POST } from '../actions/post';
+import { DELETE_POST } from '../actions/posts';
 
 export default function (state = {}, action) {
 	switch (action.type) {
@@ -7,6 +8,8 @@ export default function (state = {}, action) {
 				...state,
 				...action.post,
 			};
+		case DELETE_POST:
+			return { ...action.id };
 		default:
 			return state;
 	}
