@@ -297,7 +297,12 @@ small {
 	padding: 16px;
 }
 
-.actions a {
+.actions:hover {
+	color: #fff;
+}
+
+.actions a,
+button {
 	border: none;
 	display: flex;
 	justify-content: center;
@@ -306,7 +311,19 @@ small {
 	padding: 0;
 }
 
-.actions a:hover {
+.actions button {
+	background: transparent;
+	color: #ee5253;
+	font-size: 1.75rem;
+}
+
+.actions button small {
+	font-style: normal;
+	color: #ee5253;
+}
+
+.actions a:hover,
+button:hover {
 	color: #fff;
 }
 

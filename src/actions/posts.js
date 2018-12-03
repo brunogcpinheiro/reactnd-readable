@@ -26,8 +26,8 @@ function deletePostFunc (id) {
 
 export function handleDeletePost (id) {
 	return dispatch => {
-		return deletePost(id).then(post => {
-			dispatch(deletePostFunc(post));
+		return deletePost(id).then(() => {
+			dispatch(deletePostFunc(id));
 		});
 	};
 }
