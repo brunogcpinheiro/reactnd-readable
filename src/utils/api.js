@@ -25,14 +25,21 @@ export function getPost (id) {
 	return fetch(`${api}/posts/${id}`, { headers }).then(res => res.json());
 }
 
+export function deletePost (id) {
+	return fetch(`${api}/posts/${id}`, { method: 'DELETE', headers }).then(res =>
+		res.json(),
+	);
+}
+
 export function getComments (id) {
 	return fetch(`${api}/posts/${id}/comments`, { headers }).then(res =>
 		res.json(),
 	);
 }
 
-export function deletePost (id) {
-	return fetch(`${api}/posts/${id}`, { method: 'DELETE', headers }).then(res =>
-		res.json(),
-	);
+export function deleteComment (id) {
+	return fetch(`${api}/comments/${id}`, {
+		method: 'DELETE',
+		headers,
+	}).then(res => res.json());
 }

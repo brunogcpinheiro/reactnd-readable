@@ -1,10 +1,10 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import moment from 'moment';
-import { TiThumbsUp, TiThumbsDown } from 'react-icons/ti';
+import { TiThumbsUp, TiThumbsDown, TiTrash } from 'react-icons/ti';
 import { handleGetPost } from '../actions/post';
-import { handleGetComments } from '../actions/comments';
+import { handleGetComments, handleDeleteComment } from '../actions/comments';
 import Post from './Post';
 
 class PostPage extends Component {
@@ -13,6 +13,18 @@ class PostPage extends Component {
 		this.props.dispatch(handleGetPost(id));
 		this.props.dispatch(handleGetComments(id));
 	}
+
+	componentDidUpdate (prevProps) {
+		const { id } = this.props;
+		if (this.props.comments.length !== prevProps.comments.length) {
+			this.props.dispatch(handleGetComments(id));
+		}
+		return <Redirect to={`/${this.props.category}/${this.props.id}`} />;
+	}
+
+	handleDelete = id => {
+		this.props.dispatch(handleDeleteComment(id));
+	};
 
 	render () {
 		return (
@@ -31,6 +43,9 @@ class PostPage extends Component {
 								<small>{moment(comment.timestamp).format('LL')}</small>
 								<p>{comment.body}</p>
 								<div className="actions">
+									<span>
+										<TiTrash onClick={() => this.handleDelete(comment.id)} />
+									</span>
 									<div className="votes">
 										<Link to="/">
 											<TiThumbsUp />

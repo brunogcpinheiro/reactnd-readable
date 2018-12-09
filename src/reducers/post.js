@@ -5,11 +5,10 @@ export default function (state = {}, action) {
 	switch (action.type) {
 		case RECEIVE_POST:
 			return {
-				...state,
 				...action.post,
 			};
 		case DELETE_POST:
-			return { ...action.id };
+			return action.id;
 		default:
 			return state;
 	}

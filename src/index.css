@@ -234,6 +234,10 @@ small {
 	align-items: center;
 }
 
+.comment .actions span {
+	cursor: pointer;
+}
+
 .comment .actions a {
 	border: none;
 	display: flex;
