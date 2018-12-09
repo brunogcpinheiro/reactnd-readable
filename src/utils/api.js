@@ -25,6 +25,12 @@ export function getPost (id) {
 	return fetch(`${api}/posts/${id}`, { headers }).then(res => res.json());
 }
 
+export function createPosts () {
+	return fetch(`${api}/posts`, { method: 'POST', headers }).then(res =>
+		res.json(),
+	);
+}
+
 export function deletePost (id) {
 	return fetch(`${api}/posts/${id}`, { method: 'DELETE', headers }).then(res =>
 		res.json(),

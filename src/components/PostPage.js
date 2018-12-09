@@ -17,6 +17,7 @@ class PostPage extends Component {
 	componentDidUpdate (prevProps) {
 		const { id } = this.props;
 		if (this.props.comments.length !== prevProps.comments.length) {
+			this.props.dispatch(handleGetPost(id));
 			this.props.dispatch(handleGetComments(id));
 		}
 		return <Redirect to={`/${this.props.category}/${this.props.id}`} />;
