@@ -8,8 +8,6 @@ export default function (state = [], action) {
 			return [
 				...state,
 				{
-					id: Math.random().toString(36).substr(-8),
-					timestamps: Date.now(),
 					...action.newPost,
 				},
 			];

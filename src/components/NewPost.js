@@ -15,6 +15,8 @@ class NewPost extends Component {
 		const { title, author, category, body } = this.state;
 
 		const newPost = {
+			id: Math.random().toString(36).substr(-8),
+			timestamp: Date.now(),
 			title,
 			author,
 			category,
