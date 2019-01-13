@@ -4,10 +4,19 @@ import { Link, Redirect } from 'react-router-dom';
 import moment from 'moment';
 import { TiThumbsUp, TiThumbsDown, TiTrash } from 'react-icons/ti';
 import { handleGetPost } from '../actions/post';
-import { handleGetComments, handleDeleteComment } from '../actions/comments';
+import {
+	handleGetComments,
+	handleDeleteComment,
+	handleCreateComments,
+} from '../actions/comments';
 import Post from './Post';
 
 class PostPage extends Component {
+	state = {
+		author: '',
+		body: '',
+	};
+
 	componentDidMount () {
 		const { id } = this.props;
 		this.props.dispatch(handleGetPost(id));
@@ -25,6 +34,18 @@ class PostPage extends Component {
 
 	handleDelete = id => {
 		this.props.dispatch(handleDeleteComment(id));
+	};
+
+	handleSubmit = e => {
+		e.preventDefault();
+		const { author, body } = this.state;
+
+		const newComment = {
+			author,
+			body,
+			parentId: this.props.id,
+		};
+		this.props.dispatch(handleCreateComments(newComment));
 	};
 
 	render () {
@@ -66,15 +87,23 @@ class PostPage extends Component {
 					)}
 					<div className="add-post">
 						<h3>Add new Comment</h3>
-						<form className="add-post-form">
+						<form
+							className="add-post-form"
+							onSubmit={e => this.handleSubmit(e)}>
 							<label htmlFor="author">Author: </label>
-							<input type="text" placeholder="Type your name..." id="author" />
+							<input
+								type="text"
+								placeholder="Type your name..."
+								id="author"
+								onChange={e => this.setState({ author: e.target.value })}
+							/>
 							<label htmlFor="body">Body: </label>
 							<textarea
 								rows="5"
 								type="text"
 								placeholder="Type the comment body..."
 								id="body"
+								onChange={e => this.setState({ body: e.target.value })}
 							/>
 							<button type="submit" className="btn-submit">
 								Submit

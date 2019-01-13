@@ -13,7 +13,7 @@ body {
 
 a {
 	text-decoration: none;
-	color: #ee5253;
+	color: #ffd32a;
 	padding: 16px;
 }
 
@@ -53,8 +53,8 @@ small {
 }
 
 .title {
-	color: #ee5253;
-	border-bottom: 1px solid #ee5253;
+	color: #ffd32a;
+	border-bottom: 1px solid #ffd32a;
 	padding: 16px;
 }
 
@@ -64,7 +64,7 @@ small {
 }
 
 .active {
-	background: #ee5253;
+	background: #ffd32a;
 	color: #130f40;
 	padding: 16px 24px;
 }
@@ -85,10 +85,10 @@ small {
 }
 
 .add-post {
-	border: 2px solid #ee5253;
+	border: 2px solid #ffd32a;
 	background: transparent;
 	padding: 16px 24px;
-	color: #ee5253;
+	color: #ffd32a;
 	font-size: 1.2rem;
 	display: flex;
 	flex-direction: column;
@@ -111,7 +111,7 @@ small {
 .add-post-form select {
 	background: transparent;
 	border: none;
-	border: 1px solid #ee5253;
+	border: 1px solid #ffd32a;
 	outline: none;
 	color: #fff;
 	margin: 15px 0;
@@ -127,7 +127,7 @@ small {
 
 .btn-submit {
 	padding: 16px 24px;
-	background: #ee5253;
+	background: #ffd32a;
 	color: #130f40;
 	border: none;
 	text-transform: uppercase;
@@ -155,7 +155,7 @@ small {
 }
 
 .sort a small:hover {
-	color: #ee5253;
+	color: #ffd32a;
 }
 
 .cards {
@@ -179,7 +179,7 @@ small {
 }
 
 .comments {
-	color: #ee5253;
+	color: #ffd32a;
 	margin-top: 25px;
 	display: flex;
 	flex-direction: column;
@@ -189,7 +189,7 @@ small {
 
 .card,
 .comment {
-	border: 2px solid #ee5253;
+	border: 2px solid #ffd32a;
 	width: 350px;
 	height: 100%;
 	min-height: 250px;
@@ -208,7 +208,7 @@ small {
 
 .comment {
 	min-height: 0;
-	background: #ee5253;
+	background: #ffd32a;
 	color: #130f40;
 	border: 1px solid #a87ee5;
 	text-transform: none;
@@ -317,13 +317,13 @@ button {
 
 .actions button {
 	background: transparent;
-	color: #ee5253;
+	color: #ffd32a;
 	font-size: 1.75rem;
 }
 
 .actions button small {
 	font-style: normal;
-	color: #ee5253;
+	color: #ffd32a;
 }
 
 .actions a:hover,
@@ -352,7 +352,7 @@ button:hover {
 }
 
 .votes span {
-	color: #ee5253;
+	color: #ffd32a;
 	font-weight: 700;
 	font-size: 1.1rem;
 	padding: 1px;
@@ -367,7 +367,7 @@ button:hover {
 }
 
 .total small {
-	color: #ee5253;
+	color: #ffd32a;
 	font-style: normal;
 	font-weight: 700;
 }

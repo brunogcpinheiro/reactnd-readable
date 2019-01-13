@@ -45,6 +45,14 @@ export function getComments (id) {
 	);
 }
 
+export function createComments (comment) {
+	return fetch(`${api}/comments`, {
+		method: 'POST',
+		headers,
+		body: JSON.stringify(comment),
+	}).then(res => res.json());
+}
+
 export function deleteComment (id) {
 	return fetch(`${api}/comments/${id}`, {
 		method: 'DELETE',
