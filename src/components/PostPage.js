@@ -41,6 +41,8 @@ class PostPage extends Component {
 		const { author, body } = this.state;
 
 		const newComment = {
+			id: Math.random().toString(36).substr(-8),
+			timestamps: Date.now(),
 			author,
 			body,
 			parentId: this.props.id,

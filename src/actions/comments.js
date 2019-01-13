@@ -18,17 +18,17 @@ export function handleGetComments (id) {
 	};
 }
 
-function createCommentsFunc (newComment) {
+function createCommentsFunc (newCommentObj) {
 	return {
 		type: CREATE_COMMENTS,
-		newComment,
+		newCommentObj,
 	};
 }
 
 export function handleCreateComments (comment) {
 	return dispatch => {
 		return createComments(comment).then(newCommentObj => {
-			dispatch(createCommentsFunc({ ...comment, ...newCommentObj }));
+			dispatch(createCommentsFunc(newCommentObj));
 		});
 	};
 }
