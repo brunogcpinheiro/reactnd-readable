@@ -60,33 +60,35 @@ class PostPage extends Component {
 					<h3 style={{ margin: '20px', fontSize: '1.3rem' }}>Comments</h3>
 				</div>
 				<div className="comments">
-					{this.props.comments.length > 0 ? (
-						this.props.comments.map(comment => (
-							<div className="comment" key={comment.id}>
-								<h3>{comment.author}</h3>
-								<small>{moment(comment.timestamp).format('LL')}</small>
-								<p>{comment.body}</p>
-								<div className="actions">
-									<span>
-										<TiTrash onClick={() => this.handleDelete(comment.id)} />
-									</span>
-									<div className="votes">
-										<Link to="/">
-											<TiThumbsUp />
-										</Link>
-										<Link to="/">
-											<TiThumbsDown />
-										</Link>
-										<div className="total">
-											<span>{comment.voteScore}</span> <small>Total</small>
+					<div className="comment-wrapper">
+						{this.props.comments.length > 0 ? (
+							this.props.comments.map(comment => (
+								<div className="comment" key={comment.id}>
+									<h3>{comment.author}</h3>
+									<small>{moment(comment.timestamp).format('LL')}</small>
+									<p>{comment.body}</p>
+									<div className="actions">
+										<span>
+											<TiTrash onClick={() => this.handleDelete(comment.id)} />
+										</span>
+										<div className="votes">
+											<Link to="/">
+												<TiThumbsUp />
+											</Link>
+											<Link to="/">
+												<TiThumbsDown />
+											</Link>
+											<div className="total">
+												<span>{comment.voteScore}</span> <small>Total</small>
+											</div>
 										</div>
 									</div>
 								</div>
-							</div>
-						))
-					) : (
-						<p>No comments yet.</p>
-					)}
+							))
+						) : (
+							<p>No comments yet.</p>
+						)}
+					</div>
 					<div className="add-post">
 						<h3>Add new Comment</h3>
 						<form
