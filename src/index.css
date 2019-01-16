@@ -227,13 +227,10 @@ small {
 }
 
 .comment small {
-	color: #fff;
+	color: #181818;
 	margin: 10px 0;
 }
 
-.comment p {
-	color: #fff;
-}
 
 .comment .actions {
 	display: flex;
@@ -241,8 +238,12 @@ small {
 	align-items: center;
 }
 
-.comment .actions span {
+.comment > .actions span {
 	cursor: pointer;
+}
+
+.comment > .actions span:hover {
+	color: #fff;
 }
 
 .comment .actions a {
@@ -253,10 +254,6 @@ small {
 	flex-wrap: wrap;
 	color: #130f40;
 	padding: 5px;
-}
-
-.comment .actions a:hover {
-	color: #fff;
 }
 
 .comment .actions a span {
@@ -305,10 +302,6 @@ small {
 	align-items: center;
 	justify-content: space-between;
 	padding: 16px;
-}
-
-.actions:hover {
-	color: #fff;
 }
 
 .actions a,
