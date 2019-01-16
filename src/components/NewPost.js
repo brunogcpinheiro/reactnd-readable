@@ -22,7 +22,19 @@ class NewPost extends Component {
 			category,
 			body,
 		};
-		this.props.dispatch(handleCreatePosts(newPost));
+		
+		if (title && author && category && body !== '') {
+			this.props.dispatch(handleCreatePosts(newPost));	
+		} else {
+			alert('Fill in all the fields!');
+		}
+		
+		this.setState({
+			title: '',
+			author: '',
+			category: '',
+			body: '',
+		});
 	};
 
 	render () {

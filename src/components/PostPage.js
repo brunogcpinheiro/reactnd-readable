@@ -47,7 +47,17 @@ class PostPage extends Component {
 			body,
 			parentId: this.props.id,
 		};
-		this.props.dispatch(handleCreateComments(newComment));
+		
+		if (author && body !== '') {
+			this.props.dispatch(handleCreateComments(newComment));	
+		} else {
+			alert('Fill in all the fields!');
+		}
+		
+		this.setState({
+			author: '',
+			body: '',
+		});
 	};
 
 	render () {
@@ -99,6 +109,7 @@ class PostPage extends Component {
 								type="text"
 								placeholder="Type your name..."
 								id="author"
+								value={this.state.author}
 								onChange={e => this.setState({ author: e.target.value })}
 							/>
 							<label htmlFor="body">Body: </label>
@@ -107,6 +118,7 @@ class PostPage extends Component {
 								type="text"
 								placeholder="Type the comment body..."
 								id="body"
+								value={this.state.body}
 								onChange={e => this.setState({ body: e.target.value })}
 							/>
 							<button type="submit" className="btn-submit">
