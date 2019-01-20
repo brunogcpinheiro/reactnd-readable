@@ -1,4 +1,4 @@
-const api = 'http://readable-api-brunogcpinheiro.c9users.io';
+const api = 'http://localhost:3001';
 
 let token = localStorage.token;
 if (!token) token = localStorage.token = Math.random().toString(36).substr(-8);
@@ -57,5 +57,13 @@ export function deleteComment (id) {
 	return fetch(`${api}/comments/${id}`, {
 		method: 'DELETE',
 		headers,
+	}).then(res => res.json());
+}
+
+export function votePost (id, vote) {
+	return fetch(`${api}/posts/${id}`, {
+		method: 'POST',
+		headers,
+		option: JSON.stringify(vote),
 	}).then(res => res.json());
 }

@@ -1,7 +1,8 @@
-import { getAllPosts, createPosts, deletePost } from '../utils/api';
+import { getAllPosts, createPosts, deletePost, votePost } from '../utils/api';
 export const RECEIVE_POSTS = 'RECEIVE_POSTS';
 export const CREATE_POSTS = 'CREATE_POSTS';
 export const DELETE_POST = 'DELETE_POST';
+export const VOTE_POST = 'VOTE_POST';
 
 function receivePosts (posts) {
 	return {
@@ -44,6 +45,22 @@ export function handleDeletePost (id) {
 	return dispatch => {
 		return deletePost(id).then(() => {
 			dispatch(deletePostFunc(id));
+		});
+	};
+}
+
+function votePostFunc (id, vote) {
+	return {
+		type: VOTE_POST,
+		id,
+		vote,
+	};
+}
+
+export function handleVotePost (id, vote) {
+	return dispatch => {
+		return votePost(id, vote).then(() => {
+			dispatch(votePostFunc(id, vote));
 		});
 	};
 }

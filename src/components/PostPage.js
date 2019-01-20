@@ -47,13 +47,13 @@ class PostPage extends Component {
 			body,
 			parentId: this.props.id,
 		};
-		
+
 		if (author && body !== '') {
-			this.props.dispatch(handleCreateComments(newComment));	
+			this.props.dispatch(handleCreateComments(newComment));
 		} else {
 			alert('Fill in all the fields!');
 		}
-		
+
 		this.setState({
 			author: '',
 			body: '',
