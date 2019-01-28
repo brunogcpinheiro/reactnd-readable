@@ -1,4 +1,4 @@
-const api = 'http://localhost:3001';
+const api = 'http://readable-api-brunogcpinheiro.c9users.io:8080';
 
 let token = localStorage.token;
 if (!token) token = localStorage.token = Math.random().toString(36).substr(-8);
@@ -64,6 +64,6 @@ export function votePost (id, vote) {
 	return fetch(`${api}/posts/${id}`, {
 		method: 'POST',
 		headers,
-		option: JSON.stringify(vote),
+		body: JSON.stringify({ option: vote }),
 	}).then(res => res.json());
 }

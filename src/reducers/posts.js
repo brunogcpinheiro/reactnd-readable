@@ -19,10 +19,8 @@ export default function (state = [], action) {
 		case DELETE_POST:
 			return state.filter(post => post.id !== action.id);
 		case VOTE_POST:
-			return {
-				...state,
-				...action.posts,
-			};
+			return state.map(
+        		(post) => post.id === action.post.id ? action.post : post );
 		default:
 			return state;
 	}

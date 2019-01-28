@@ -49,18 +49,17 @@ export function handleDeletePost (id) {
 	};
 }
 
-function votePostFunc (id, vote) {
+function votePostFunc (post) {
 	return {
 		type: VOTE_POST,
-		id,
-		vote,
+		post
 	};
 }
 
 export function handleVotePost (id, vote) {
 	return dispatch => {
-		return votePost(id, vote).then(() => {
-			dispatch(votePostFunc(id, vote));
+		return votePost(id, vote).then(post => {
+			dispatch(votePostFunc(post));
 		});
 	};
 }
