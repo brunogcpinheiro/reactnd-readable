@@ -1,4 +1,5 @@
 import { getAllPosts, createPosts, deletePost, votePost } from '../utils/api';
+import { showLoading, hideLoading } from 'react-redux-loading-bar';
 export const RECEIVE_POSTS = 'RECEIVE_POSTS';
 export const CREATE_POSTS = 'CREATE_POSTS';
 export const DELETE_POST = 'DELETE_POST';
@@ -13,8 +14,10 @@ function receivePosts (posts) {
 
 export function handleGetAllPosts (category) {
 	return dispatch => {
+		dispatch(showLoading());
 		return getAllPosts(category).then(posts => {
 			dispatch(receivePosts(posts));
+			dispatch(hideLoading());
 		});
 	};
 }
@@ -28,8 +31,10 @@ function createPostsFunc (newPost) {
 
 export function handleCreatePosts (post) {
 	return dispatch => {
+		dispatch(showLoading());
 		return createPosts(post).then(newPostObj => {
 			dispatch(createPostsFunc({ ...post, ...newPostObj }));
+			dispatch(hideLoading());
 		});
 	};
 }
@@ -43,8 +48,10 @@ function deletePostFunc (id) {
 
 export function handleDeletePost (id) {
 	return dispatch => {
+		dispatch(showLoading());
 		return deletePost(id).then(() => {
 			dispatch(deletePostFunc(id));
+			dispatch(hideLoading());
 		});
 	};
 }
@@ -58,8 +65,10 @@ function votePostFunc (post) {
 
 export function handleVotePost (id, vote) {
 	return dispatch => {
+		dispatch(showLoading());
 		return votePost(id, vote).then(post => {
 			dispatch(votePostFunc(post));
+			dispatch(hideLoading());
 		});
 	};
 }

@@ -5,12 +5,14 @@ import Nav from './Nav';
 import Dashboard from './Dashboard';
 import NewPost from './NewPost';
 import PostPage from './PostPage';
+import LoadingBar from 'react-redux-loading-bar';
 
 class App extends Component {
 	render () {
 		return (
 			<Router>
 				<div className="container">
+					<LoadingBar style={{backgroundColor: '#ffd32a'}} />
 					<div>
 						<h1 className="title">
 							Read<span>able</span>

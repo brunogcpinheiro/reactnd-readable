@@ -6753,13 +6753,21 @@ react-is@^16.3.2, react-is@^16.6.0:
   version "16.6.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.6.1.tgz#f77b1c3d901be300abe8d58645b7a59e794e5982"
 
-react-lifecycles-compat@^3.0.0:
+react-lifecycles-compat@^3.0.0, react-lifecycles-compat@^3.0.2:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
 
 react-loading@^2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/react-loading/-/react-loading-2.0.3.tgz#e8138fb0c3e4674e481b320802ac7048ae14ffb9"
+
+react-redux-loading-bar@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/react-redux-loading-bar/-/react-redux-loading-bar-4.2.0.tgz#491469bcdcbc54366f502e1a6a685b324807a45a"
+  integrity sha512-UkdBa7973LtJu86Aq9v0sdoBPuMR5S3hgQj3prpBUvz4IZjxh11ZP2gc4rzotr4atmKCdQoN1WRuBnazUAq5/A==
+  dependencies:
+    prop-types "^15.6.2"
+    react-lifecycles-compat "^3.0.2"
 
 react-redux@^5.1.1:
   version "5.1.1"
