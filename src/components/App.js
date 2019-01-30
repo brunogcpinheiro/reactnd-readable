@@ -12,7 +12,7 @@ class App extends Component {
 		return (
 			<Router>
 				<div className="container">
-					<LoadingBar style={{backgroundColor: '#ffd32a'}} />
+					<LoadingBar style={{backgroundColor: '#ffd32a', height: '5px'}} />
 					<div>
 						<h1 className="title">
 							Read<span>able</span>

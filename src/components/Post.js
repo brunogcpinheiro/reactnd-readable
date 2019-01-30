@@ -10,6 +10,7 @@ import { TiMessage } from 'react-icons/ti';
 import { handleDeletePost, handleVotePost } from '../actions/posts';
 
 class Card extends Component {
+	
 	handleDelete = id => {
 		this.props.dispatch(handleDeletePost(id));
 	};
@@ -68,10 +69,11 @@ class Card extends Component {
 	}
 }
 
-function mapStateToProps ({ posts, post }) {
+function mapStateToProps ({ posts, post, comments }) {
 	return {
 		posts,
 		post,
+		comments,
 	};
 }
 

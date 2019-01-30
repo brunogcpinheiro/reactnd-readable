@@ -1,14 +1,15 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import moment from 'moment';
 import { TiThumbsUp, TiThumbsDown, TiTrash } from 'react-icons/ti';
-import { handleGetPost } from '../actions/post';
 import {
 	handleGetComments,
 	handleDeleteComment,
 	handleCreateComments,
+	handleVoteComment,
 } from '../actions/comments';
+import { incrementComments,	decrementComments } from '../actions/posts';
 import Post from './Post';
 
 class PostPage extends Component {
@@ -19,14 +20,12 @@ class PostPage extends Component {
 
 	componentDidMount () {
 		const { id } = this.props;
-		this.props.dispatch(handleGetPost(id));
 		this.props.dispatch(handleGetComments(id));
 	}
 
 	componentDidUpdate (prevProps) {
 		const { id } = this.props;
 		if (this.props.comments.length !== prevProps.comments.length) {
-			this.props.dispatch(handleGetPost(id));
 			this.props.dispatch(handleGetComments(id));
 		}
 		return <Redirect to={`/${this.props.category}/${this.props.id}`} />;
@@ -34,6 +33,7 @@ class PostPage extends Component {
 
 	handleDelete = id => {
 		this.props.dispatch(handleDeleteComment(id));
+		this.props.dispatch(decrementComments(this.props.id));
 	};
 
 	handleSubmit = e => {
@@ -58,6 +58,8 @@ class PostPage extends Component {
 			author: '',
 			body: '',
 		});
+		
+		this.props.dispatch(incrementComments(this.props.id));
 	};
 
 	render () {
@@ -82,12 +84,14 @@ class PostPage extends Component {
 											<TiTrash onClick={() => this.handleDelete(comment.id)} />
 										</span>
 										<div className="votes">
-											<Link to="/">
-												<TiThumbsUp />
-											</Link>
-											<Link to="/">
-												<TiThumbsDown />
-											</Link>
+											<TiThumbsUp
+												onClick={() => this.props.dispatch(handleVoteComment(comment.id, 'upVote'))}
+											/>{' '}
+											<TiThumbsDown
+												onClick={() =>
+													this.props.dispatch(handleVoteComment(comment.id, 'downVote'))}
+											/>{' '}
+	
 											<div className="total">
 												<span>{comment.voteScore}</span> <small>Total</small>
 											</div>
@@ -132,11 +136,11 @@ class PostPage extends Component {
 	}
 }
 
-function mapStateToProps ({ post, comments }, props) {
+function mapStateToProps ({ posts, comments }, props) {
 	const { category, id } = props.match.params;
 
 	return {
-		post,
+		post: posts.find(post => post.id === props.match.params.id),
 		category,
 		id,
 		comments,

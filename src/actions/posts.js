@@ -4,6 +4,9 @@ export const RECEIVE_POSTS = 'RECEIVE_POSTS';
 export const CREATE_POSTS = 'CREATE_POSTS';
 export const DELETE_POST = 'DELETE_POST';
 export const VOTE_POST = 'VOTE_POST';
+export const SORT_POST = 'SORT_POST';
+export const INCREMENT_COMMENTS = 'INCREMENT_COMMENTS';
+export const DECREMENT_COMMENTS = 'DECREMENT_COMMENTS';
 
 function receivePosts (posts) {
 	return {
@@ -21,6 +24,13 @@ export function handleGetAllPosts (category) {
 		});
 	};
 }
+
+export const setSort = (sortType) => {
+  return {
+    type: SORT_POST,
+    sortType
+  };
+};
 
 function createPostsFunc (newPost) {
 	return {
@@ -70,5 +80,19 @@ export function handleVotePost (id, vote) {
 			dispatch(votePostFunc(post));
 			dispatch(hideLoading());
 		});
+	};
+}
+
+export function incrementComments (postId) {
+	return {
+		type: INCREMENT_COMMENTS,
+		postId
+	};
+}
+
+export function decrementComments (postId) {
+	return {
+		type: DECREMENT_COMMENTS,
+		postId
 	};
 }

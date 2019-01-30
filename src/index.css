@@ -350,6 +350,14 @@ button:hover {
 	border-radius: 3px;
 }
 
+.votes > svg {
+	cursor: pointer;
+}
+
+.votes > svg:hover {
+	color: #fff;
+}
+
 .votes span {
 	color: #ffd32a;
 	font-weight: 700;

@@ -1,8 +1,9 @@
-import { getComments, createComments, deleteComment } from '../utils/api';
+import { getComments, createComments, deleteComment, voteComment } from '../utils/api';
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
 export const RECEIVE_COMMENTS = 'RECEIVE_COMMENTS';
 export const CREATE_COMMENTS = 'CREATE_COMMENTS';
 export const DELETE_COMMENT = 'DELETE_COMMENT';
+export const VOTE_COMMENT = 'VOTE_COMMENT';
 
 function receiveComments (comments) {
 	return {
@@ -50,6 +51,23 @@ export function handleDeleteComment (id) {
 		dispatch(showLoading());
 		return deleteComment(id).then(() => {
 			dispatch(deleteCommentFunc(id));
+			dispatch(hideLoading());
+		});
+	};
+}
+
+function voteCommentFunc (comment) {
+	return {
+		type: VOTE_COMMENT,
+		comment,
+	};
+}
+
+export function handleVoteComment (id, vote) {
+	return dispatch => {
+		dispatch(showLoading());
+		return voteComment(id, vote).then(comment => {
+			dispatch(voteCommentFunc(comment));
 			dispatch(hideLoading());
 		});
 	};
