@@ -10,7 +10,6 @@ class Nav extends Component {
 	}
 
 	render () {
-		console.log(this.props);
 		return (
 			<nav className="nav">
 				<ul>

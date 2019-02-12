@@ -25,7 +25,7 @@ class Card extends Component {
 			timestamp,
 			voteScore,
 			id,
-		} = this.props.singlePost;
+		} = this.props.post;
 
 		return (
 			<div className="card">
@@ -69,10 +69,9 @@ class Card extends Component {
 	}
 }
 
-function mapStateToProps ({ posts, post, comments }) {
+function mapStateToProps ({ posts, comments }) {
 	return {
 		posts,
-		post,
 		comments,
 	};
 }

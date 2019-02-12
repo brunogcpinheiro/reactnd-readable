@@ -66,7 +66,7 @@ class PostPage extends Component {
 		return (
 			<Fragment>
 				<div className="cards">
-					<Post singlePost={this.props.post} />
+					<Post post={this.props.singlePost} />
 				</div>
 				<div>
 					<h3 style={{ margin: '20px', fontSize: '1.3rem' }}>Comments</h3>
@@ -140,7 +140,7 @@ function mapStateToProps ({ posts, comments }, props) {
 	const { category, id } = props.match.params;
 
 	return {
-		post: posts.find(post => post.id === props.match.params.id),
+		singlePost: posts.find(post => post.id === id),
 		category,
 		id,
 		comments,
