@@ -8,6 +8,10 @@ import { TiTime } from 'react-icons/ti';
 import NewPost from './NewPost';
 
 class Dashboard extends Component {
+	state = {
+		sortType: ''
+	}
+	
 	componentDidMount () {
 		this.props.dispatch(handleGetAllPosts(this.props.category));
 	}
@@ -17,47 +21,30 @@ class Dashboard extends Component {
 			this.props.dispatch(handleGetAllPosts(this.props.category));
 		}
 	}
-	
-	handleSortVote = (e, sorType) => {
-		e.preventDefault();
-		
-		// switch(sorType) {
-		// 	case 'upVote':
-		// 		return this.props.orderedPosts.sort((a, b) => a.voteScore - b.voteScore);
-		// 	case 'downVote':
-		// 		return this.props.orderedPosts.sort((a, b) => b.voteScore - a.voteScore);
-		// 	case 'upTime':
-		// 		return this.props.orderedPosts.sort((a, b) => a.timestamp - b.timestamp);
-		// 	case 'downTime':
-		// 		return this.props.orderedPosts.sort((a, b) => b.timestamp - a.timestamp);
-		// 	default:
-		// 		return console.log('Something goes wrong!')
-		// }
-	}
 
 	render () {
 		return (
 			<Fragment>
 				<div className="sort">
 					<h3>Sort by</h3>
-					<button onClick={e => this.handleSortVote(e, "upVote")}>
+					<button onClick={() => this.setState({ sortType: 'moreVoted' })}>
 						<TiStarFullOutline />
-						<small>Votes Up</small>
+						<small>More Voted</small>
 					</button>
-					<button onClick={e => this.handleSortVote(e, "downVote")}>
+					<button onClick={() => this.setState({ sortType: 'lessVoted' })}>
 						<TiStarFullOutline />
-						<small>Votes Down</small>
+						<small>Less Voted</small>
 					</button>
-					<button onClick={e => this.handleSortVote(e, "upVote")}>
+					<button onClick={() => this.setState({ sortType: 'newest' })}>
 						<TiTime />
-						<small>Up Time</small>
+						<small>Newest</small>
 					</button>
-					<button onClick={e => this.handleSortVote(e, "downVote")}>
+					<button onClick={() => this.setState({ sortType: 'oldest' })}>
 						<TiTime />
-						<small>Down Time</small>
+						<small>Oldest</small>
 					</button>
 				</div>
-				<PostsList posts={this.props.orderedPosts} />
+				<PostsList posts={this.props.posts} sortType={this.state.sortType} />
 				<NewPost />
 			</Fragment>
 		);
@@ -69,7 +56,7 @@ function mapStateToProps ({ posts }, props) {
 	const { pathname } = props.location;
 
 	return {
-		orderedPosts: posts.sort((a, b) => b.voteScore - a.voteScore),
+		posts,
 		category,
 		pathname
 	};

@@ -6,8 +6,8 @@ class PostsList extends Component {
     render () {
         return (
             <div className="cards">
-				{this.props.posts.length > 0 ?
-				this.props.posts.map(post => (
+				{this.props.orderedPosts.length > 0 ?
+				this.props.orderedPosts.map(post => (
 				    <Post key={post.id} post={post} />
 				)): null}
 			</div>
@@ -15,4 +15,19 @@ class PostsList extends Component {
     }
 }
 
-export default connect()(PostsList);
+function mapStateToProps ({ posts }, props) {
+        
+    if (props.sortType === 'moreVoted') {
+        return { orderedPosts: posts.sort((a, b) => b.voteScore - a.voteScore) };
+    } else if (props.sortType === 'lessVoted') {
+        return { orderedPosts: posts.sort((a, b) => a.voteScore - b.voteScore) };
+    } else if (props.sortType === 'newest') {
+        return { orderedPosts: posts.sort((a, b) => b.timestamp - a.timestamp) };
+    } else if (props.sortType === 'oldest') {
+        return { orderedPosts: posts.sort((a, b) => a.timestamp - b.timestamp) };
+    } else {
+        return { orderedPosts: posts.sort((a, b) => b.timestamp - a.timestamp) };
+    }
+}
+
+export default connect(mapStateToProps)(PostsList);
