@@ -3,8 +3,7 @@ import { connect } from 'react-redux';
 import PostsList from './PostsList';
 import { handleGetAllPosts } from '../actions/posts';
 import { withRouter } from 'react-router-dom';
-import { TiStarFullOutline } from 'react-icons/ti';
-import { TiTime } from 'react-icons/ti';
+import { TiStarFullOutline, TiStarOutline, TiTime } from 'react-icons/ti';
 import NewPost from './NewPost';
 
 class Dashboard extends Component {
@@ -32,7 +31,7 @@ class Dashboard extends Component {
 						<small>More Voted</small>
 					</button>
 					<button className="sort-btn" onClick={() => this.setState({ sortType: 'lessVoted' })}>
-						<TiStarFullOutline />
+						<TiStarOutline />
 						<small>Less Voted</small>
 					</button>
 					<button className="sort-btn" onClick={() => this.setState({ sortType: 'newest' })}>
@@ -46,7 +45,9 @@ class Dashboard extends Component {
 				</div>
 				<a href="#new">New Post</a>
 				<PostsList posts={this.props.posts} sortType={this.state.sortType} />
-				<NewPost id="new" />
+				<div id="new">
+					<NewPost />
+				</div>
 			</Fragment>
 		);
 	}
