@@ -68,7 +68,7 @@ class Comments extends Component {
             <div className="comment-wrapper">
 				{this.props.sortedComments.length > 0 ? (
 					this.props.sortedComments.map(comment => (
-						<div className="comment" key={comment.id}>
+						<div className="comment" key={comment.timestamp} >
 							<h3>{comment.author}</h3>
 							<small>{moment(comment.timestamp).format('LL')}</small>
 							<p>{comment.body}</p>
