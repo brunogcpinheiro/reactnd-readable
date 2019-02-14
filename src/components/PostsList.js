@@ -26,7 +26,7 @@ function mapStateToProps ({ posts }, props) {
     } else if (props.sortType === 'oldest') {
         return { orderedPosts: posts.sort((a, b) => a.timestamp - b.timestamp) };
     } else {
-        return { orderedPosts: posts.sort((a, b) => b.timestamp - a.timestamp) };
+        return { orderedPosts: posts.sort((a, b) => b.voteScore - a.voteScore) };
     }
 }
 

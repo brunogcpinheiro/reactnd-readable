@@ -139,23 +139,12 @@ small {
 	justify-content: center;
 }
 
-.sort a {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	font-size: 1.8rem;
-}
-
-.sort a small {
-	color: #fff;
-	vertical-align: middle;
-	text-transform: uppercase;
-	font-style: normal;
-	font-weight: 700;
-}
-
-.sort a small:hover {
+.sort .sort-btn {
+	background: transparent;
+	font-size: 1.2rem;
 	color: #ffd32a;
+	padding: 20px;
+	outline: none;
 }
 
 .cards {
@@ -189,6 +178,7 @@ small {
 
 .comment-wrapper {
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	flex-wrap: wrap;

@@ -27,25 +27,26 @@ class Dashboard extends Component {
 			<Fragment>
 				<div className="sort">
 					<h3>Sort by</h3>
-					<button onClick={() => this.setState({ sortType: 'moreVoted' })}>
+					<button className="sort-btn" onClick={() => this.setState({ sortType: 'moreVoted' })}>
 						<TiStarFullOutline />
 						<small>More Voted</small>
 					</button>
-					<button onClick={() => this.setState({ sortType: 'lessVoted' })}>
+					<button className="sort-btn" onClick={() => this.setState({ sortType: 'lessVoted' })}>
 						<TiStarFullOutline />
 						<small>Less Voted</small>
 					</button>
-					<button onClick={() => this.setState({ sortType: 'newest' })}>
+					<button className="sort-btn" onClick={() => this.setState({ sortType: 'newest' })}>
 						<TiTime />
 						<small>Newest</small>
 					</button>
-					<button onClick={() => this.setState({ sortType: 'oldest' })}>
+					<button className="sort-btn" onClick={() => this.setState({ sortType: 'oldest' })}>
 						<TiTime />
 						<small>Oldest</small>
 					</button>
 				</div>
+				<a href="#new">New Post</a>
 				<PostsList posts={this.props.posts} sortType={this.state.sortType} />
-				<NewPost />
+				<NewPost id="new" />
 			</Fragment>
 		);
 	}
