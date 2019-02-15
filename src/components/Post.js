@@ -11,7 +11,7 @@ import {
 		TiMessage,
 		TiEdit	
 } from 'react-icons/ti';
-import { handleDeletePost, handleVotePost } from '../actions/posts';
+import { handleGetAllPosts, handleDeletePost, handleVotePost, handleEditPost } from '../actions/posts';
 
 class Card extends Component {
 	state = {
@@ -30,6 +30,29 @@ class Card extends Component {
 	
 	onCloseModal = () => {
 		this.setState({ open: false });
+	}
+	
+	handleEditSubmit = (e, id) => {
+		e.preventDefault();
+		
+		const { title, body } = this.state;
+
+		const editedPost = {
+			title,
+			body,
+		};
+		
+		if (title && body !== '') {
+			this.props.dispatch(handleEditPost(id, editedPost));	
+		} else {
+			alert('Fill in all the fields!');
+		}
+		
+		this.setState({
+			open: false,
+			title: '',
+			body: '',
+		});
 	}
 
 	render () {
@@ -65,13 +88,14 @@ class Card extends Component {
 					}}
 					>
 					<h2>Edit post</h2>
-			          <form className="edit-post-form">
+			          <form className="edit-post-form" onSubmit={e => this.handleEditSubmit(e, id)}>
 						<label htmlFor="title">Title: </label>
 						<input
 							type="text"
 							placeholder="Edit the post title..."
 							id="title"
 							value={this.state.title}
+							onChange={e => this.setState({ title: e.target.value })}
 						/>
 						<label htmlFor="body">Body: </label>
 						<textarea
@@ -80,6 +104,7 @@ class Card extends Component {
 							placeholder="Edit the post body..."
 							id="body"
 							value={this.state.body}
+							onChange={e => this.setState({ body: e.target.value })}
 						/>
 						<button type="submit" className="edit-btn-submit">
 							Submit

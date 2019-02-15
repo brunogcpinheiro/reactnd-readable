@@ -33,6 +33,14 @@ export function createPosts (post) {
 	}).then(res => res.json());
 }
 
+export function editPost (id, post) {
+	return fetch(`${api}/posts/${id}`, {
+		method: 'PUT',
+		headers,
+		body: JSON.stringify(post),
+	}).then(res => res.json());
+}
+
 export function deletePost (id) {
 	return fetch(`${api}/posts/${id}`, { method: 'DELETE', headers }).then(res =>
 		res.json(),

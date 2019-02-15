@@ -1,7 +1,8 @@
-import { getAllPosts, createPosts, deletePost, votePost } from '../utils/api';
+import { getAllPosts, createPosts, deletePost, votePost, editPost } from '../utils/api';
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
 export const RECEIVE_POSTS = 'RECEIVE_POSTS';
 export const CREATE_POSTS = 'CREATE_POSTS';
+export const EDIT_POST = 'EDIT_POST';
 export const DELETE_POST = 'DELETE_POST';
 export const VOTE_POST = 'VOTE_POST';
 export const INCREMENT_COMMENTS = 'INCREMENT_COMMENTS';
@@ -36,6 +37,23 @@ export function handleCreatePosts (post) {
 		dispatch(showLoading());
 		return createPosts(post).then(newPostObj => {
 			dispatch(createPostsFunc({ ...post, ...newPostObj }));
+			dispatch(hideLoading());
+		});
+	};
+}
+
+function editPostFunc (editedPost) {
+	return {
+		type: EDIT_POST,
+		editedPost,
+	};
+}
+
+export function handleEditPost (id, post) {
+	return dispatch => {
+		dispatch(showLoading());
+		return editPost(id, post).then(editedPostObj => {
+			dispatch(editPostFunc({ ...post, ...editedPostObj }));
 			dispatch(hideLoading());
 		});
 	};

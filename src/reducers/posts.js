@@ -2,6 +2,7 @@ import {
 	RECEIVE_POSTS,
 	CREATE_POSTS,
 	DELETE_POST,
+	EDIT_POST,
 	VOTE_POST,
 	DECREMENT_COMMENTS,
 	INCREMENT_COMMENTS
@@ -18,6 +19,10 @@ export default function (state = [], action) {
 					...action.newPost,
 				},
 			];
+		case EDIT_POST:
+			return state.map(post => post.id === action.editedPost.id
+	        ?  {...post, ...action.editedPost }
+	        : post);
 		case DELETE_POST:
 			return state.filter(post => post.id !== action.id);
 		case VOTE_POST:
