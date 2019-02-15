@@ -33,7 +33,7 @@ class NewComment extends Component {
 			body: '',
 		});
 		
-		this.props.dispatch(incrementComments(this.props.id));
+		this.props.dispatch(incrementComments(this.props.postId));
 	};
 	
     render () {
