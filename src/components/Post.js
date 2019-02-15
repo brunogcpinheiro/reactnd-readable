@@ -11,7 +11,7 @@ import {
 		TiMessage,
 		TiEdit	
 } from 'react-icons/ti';
-import { handleGetAllPosts, handleDeletePost, handleVotePost, handleEditPost } from '../actions/posts';
+import { handleDeletePost, handleVotePost, handleEditPost } from '../actions/posts';
 
 class Card extends Component {
 	state = {

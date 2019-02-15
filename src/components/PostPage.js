@@ -18,7 +18,7 @@ class PostPage extends Component {
 					<Comments 
 						comments={this.props.comments} 
 						id={this.props.id} 
-						category={this.props.category} 
+						category={this.props.category}
 					/>
 				</div>
 			</Fragment>

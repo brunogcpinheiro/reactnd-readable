@@ -61,6 +61,14 @@ export function createComments (comment) {
 	}).then(res => res.json());
 }
 
+export function editComment (id, comment) {
+	return fetch(`${api}/comments/${id}`, {
+		method: 'PUT',
+		headers,
+		body: JSON.stringify(comment),
+	}).then(res => res.json());
+}
+
 export function deleteComment (id) {
 	return fetch(`${api}/comments/${id}`, {
 		method: 'DELETE',
