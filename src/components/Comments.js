@@ -6,20 +6,18 @@ import moment from 'moment';
 import { TiThumbsUp, TiThumbsDown, TiTrash, TiEdit } from 'react-icons/ti';
 import {
 	handleVoteComment,
-	handleDeleteComment,
 	handleGetComments,
-	handleCreateComments,
-	handleEditComment
+	handleEditComment,
+	handleDeleteComment,
 } from '../actions/comments';
 
-import { incrementComments,	decrementComments } from '../actions/posts';
+import { decrementComments } from '../actions/posts';
+import NewComment from './NewComment';
 
 class Comments extends Component {
 	
 	state = {
 		open: false,
-		author: '',
-		body: '',
 	};
 
 	componentDidMount () {
@@ -34,32 +32,6 @@ class Comments extends Component {
 		}
 		return <Redirect to={`/${this.props.category}/${this.props.id}`} />;
 	}
-
-	handleSubmit = e => {
-		e.preventDefault();
-		const { author, body } = this.state;
-
-		const newComment = {
-			id: Math.random().toString(36).substr(-8),
-			timestamps: Date.now(),
-			author,
-			body,
-			parentId: this.props.id,
-		};
-
-		if (author && body !== '') {
-			this.props.dispatch(handleCreateComments(newComment));
-		} else {
-			alert('Fill in all the fields!');
-		}
-
-		this.setState({
-			author: '',
-			body: '',
-		});
-		
-		this.props.dispatch(incrementComments(this.props.id));
-	};
 	
 	handleEditSubmit = (e, id) => {
 		e.preventDefault();
@@ -109,7 +81,7 @@ class Comments extends Component {
 							</button>
 							<Modal 
 								open={this.state.open} 
-								onClose={() => this.onCloseModal()} 
+								onClose={() => this.onCloseModal()}
 								center
 								classNames={{
 									modal: 'modal-content',
@@ -155,33 +127,7 @@ class Comments extends Component {
 				) : (
 					<p>No comments yet.</p>
 				)}
-				<div className="add-post">
-					<h3>Add new Comment</h3>
-					<form
-						className="add-post-form"
-						onSubmit={e => this.handleSubmit(e)}>
-						<label htmlFor="author">Author: </label>
-						<input
-							type="text"
-							placeholder="Type your name..."
-							id="author"
-							value={this.state.author}
-							onChange={e => this.setState({ author: e.target.value })}
-						/>
-						<label htmlFor="body">Body: </label>
-						<textarea
-							rows="5"
-							type="text"
-							placeholder="Type the comment body..."
-							id="body"
-							value={this.state.body}
-							onChange={e => this.setState({ body: e.target.value })}
-						/>
-						<button type="submit" className="btn-submit">
-							Submit
-						</button>
-					</form>
-				</div>
+				<NewComment postId={this.props.id} />
 			</div>
         );
     }
@@ -189,7 +135,7 @@ class Comments extends Component {
 
 function mapStateToProps ({ posts }, props) {
     return {
-    	sortedComments: props.comments.sort((a, b) => b.voteScore - a.voteScore)
+    	sortedComments: props.comments.sort((a, b) => b.voteScore - a.voteScore),
     };
 }
 
