@@ -134,6 +134,34 @@ small {
 	text-transform: uppercase;
 }
 
+.edit-post-form {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	margin-top: 15px;
+}
+
+.edit-post-form input,
+.edit-post-form textarea {
+	background: transparent;
+	border: none;
+	border: 1px solid #ffd32a;
+	outline: none;
+	color: #fff;
+	margin: 15px 0;
+	width: 100%;
+	padding: 16px 0;
+	text-indent: 10px;
+}
+
+.edit-btn-submit {
+	padding: 16px 24px;
+	background: #ffd32a;
+	color: #130f40;
+	border: none;
+	text-transform: uppercase;
+}
+
 .sort {
 	display: flex;
 	align-items: center;
@@ -146,6 +174,12 @@ small {
 	color: #ffd32a;
 	padding: 20px;
 	outline: none;
+}
+
+.new-post-btn {
+	background: #ffd32a;
+	padding: 10px 20px;
+	color: #130f40;
 }
 
 .cards {
@@ -286,6 +320,14 @@ small {
 	margin-top: 15px;
 }
 
+.edit-btn {
+	background: #ffd32a;
+	color: #130f40;
+	padding: 5px 10px;
+	margin-top: 20px;
+	align-self: flex-end;
+}
+
 .actions {
 	width: 100%;
 	display: flex;
@@ -368,4 +410,18 @@ button:hover {
 	color: #ffd32a;
 	font-style: normal;
 	font-weight: 700;
+}
+
+.modal-content {
+	background: #130f40;
+	color: #ffd32a;
+	width: 100%;
+}
+
+.modal-close {
+	background: #ffd32a;
+}
+
+.model-content input {
+	width: 100%;
 }

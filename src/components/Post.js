@@ -1,19 +1,36 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
+import Modal from 'react-responsive-modal';
 import { connect } from 'react-redux';
-import { TiThumbsUp } from 'react-icons/ti';
-import { TiThumbsDown } from 'react-icons/ti';
-import { TiTrash } from 'react-icons/ti';
-import { TiTabsOutline } from 'react-icons/ti';
-import { TiMessage } from 'react-icons/ti';
+import { 
+		TiThumbsUp, 
+		TiThumbsDown, 
+		TiTrash, 
+		TiTabsOutline, 
+		TiMessage,
+		TiEdit	
+} from 'react-icons/ti';
 import { handleDeletePost, handleVotePost } from '../actions/posts';
 
 class Card extends Component {
+	state = {
+		open: false,
+		title: this.props.post.title,
+		body: this.props.post.body
+	}
 	
 	handleDelete = id => {
 		this.props.dispatch(handleDeletePost(id));
 	};
+	
+	onOpenModal = () => {
+		this.setState({ open: true });
+	}
+	
+	onCloseModal = () => {
+		this.setState({ open: false });
+	}
 
 	render () {
 		const {
@@ -35,6 +52,40 @@ class Card extends Component {
 					by <strong>{author}</strong> at {moment(timestamp).format('LL')}
 				</small>
 				<p>{body}</p>
+				<button onClick={() => this.onOpenModal()} className="edit-btn">
+					<TiEdit />Edit post
+				</button>
+				<Modal 
+					open={this.state.open} 
+					onClose={() => this.onCloseModal()} 
+					center
+					classNames={{
+						modal: 'modal-content',
+						closeButton: 'modal-close'
+					}}
+					>
+					<h2>Edit post</h2>
+			          <form className="edit-post-form">
+						<label htmlFor="title">Title: </label>
+						<input
+							type="text"
+							placeholder="Edit the post title..."
+							id="title"
+							value={this.state.title}
+						/>
+						<label htmlFor="body">Body: </label>
+						<textarea
+							rows="5"
+							type="text"
+							placeholder="Edit the post body..."
+							id="body"
+							value={this.state.body}
+						/>
+						<button type="submit" className="edit-btn-submit">
+							Submit
+						</button>
+					</form>
+		        </Modal>
 				<div className="actions">
 					<Link to={`/${category}/${id}`}>
 						<TiTabsOutline />
