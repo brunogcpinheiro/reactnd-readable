@@ -8,9 +8,9 @@ import NewPost from './NewPost';
 
 class Dashboard extends Component {
 	state = {
-		sortType: ''
-	}
-	
+		sortType: '',
+	};
+
 	componentDidMount () {
 		this.props.dispatch(handleGetAllPosts(this.props.category));
 	}
@@ -26,24 +26,34 @@ class Dashboard extends Component {
 			<Fragment>
 				<div className="sort">
 					<h3>Sort by</h3>
-					<button className="sort-btn" onClick={() => this.setState({ sortType: 'moreVoted' })}>
+					<button
+						className="sort-btn"
+						onClick={() => this.setState({ sortType: 'moreVoted' })}>
 						<TiStarFullOutline />
 						<small>More Voted</small>
 					</button>
-					<button className="sort-btn" onClick={() => this.setState({ sortType: 'lessVoted' })}>
+					<button
+						className="sort-btn"
+						onClick={() => this.setState({ sortType: 'lessVoted' })}>
 						<TiStarOutline />
 						<small>Less Voted</small>
 					</button>
-					<button className="sort-btn" onClick={() => this.setState({ sortType: 'newest' })}>
+					<button
+						className="sort-btn"
+						onClick={() => this.setState({ sortType: 'newest' })}>
 						<TiTime />
 						<small>Newest</small>
 					</button>
-					<button className="sort-btn" onClick={() => this.setState({ sortType: 'oldest' })}>
+					<button
+						className="sort-btn"
+						onClick={() => this.setState({ sortType: 'oldest' })}>
 						<TiTime />
 						<small>Oldest</small>
 					</button>
 				</div>
-				<a href="#new" className="new-post-btn">New Post</a>
+				<a href="#new" className="new-post-btn">
+					New Post
+				</a>
 				<PostsList posts={this.props.posts} sortType={this.state.sortType} />
 				<div id="new">
 					<NewPost />
@@ -60,7 +70,7 @@ function mapStateToProps ({ posts }, props) {
 	return {
 		posts,
 		category,
-		pathname
+		pathname,
 	};
 }
 

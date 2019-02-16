@@ -3,57 +3,59 @@ import moment from 'moment';
 import { Link } from 'react-router-dom';
 import Modal from 'react-responsive-modal';
 import { connect } from 'react-redux';
-import { 
-		TiThumbsUp, 
-		TiThumbsDown, 
-		TiTrash, 
-		TiTabsOutline, 
-		TiMessage,
-		TiEdit	
+import {
+	TiThumbsUp,
+	TiThumbsDown,
+	TiTrash,
+	TiTabsOutline,
+	TiMessage,
+	TiEdit,
 } from 'react-icons/ti';
-import { handleDeletePost, handleVotePost, handleEditPost } from '../actions/posts';
+import {
+	handleDeletePost,
+	handleVotePost,
+	handleEditPost,
+} from '../actions/posts';
 
 class Card extends Component {
 	state = {
 		open: false,
 		title: this.props.post.title,
-		body: this.props.post.body
-	}
-	
+		body: this.props.post.body,
+	};
+
 	handleDelete = id => {
 		this.props.dispatch(handleDeletePost(id));
 	};
-	
+
 	onOpenModal = () => {
 		this.setState({ open: true });
-	}
-	
+	};
+
 	onCloseModal = () => {
 		this.setState({ open: false });
-	}
-	
+	};
+
 	handleEditSubmit = (e, id) => {
 		e.preventDefault();
-		
+
 		const { title, body } = this.state;
 
 		const editedPost = {
 			title,
 			body,
 		};
-		
+
 		if (title && body !== '') {
-			this.props.dispatch(handleEditPost(id, editedPost));	
+			this.props.dispatch(handleEditPost(id, editedPost));
 		} else {
 			alert('Fill in all the fields!');
 		}
-		
+
 		this.setState({
 			open: false,
-			title: '',
-			body: '',
 		});
-	}
+	};
 
 	render () {
 		const {
@@ -78,17 +80,18 @@ class Card extends Component {
 				<button onClick={() => this.onOpenModal()} className="edit-btn">
 					<TiEdit />Edit post
 				</button>
-				<Modal 
-					open={this.state.open} 
-					onClose={() => this.onCloseModal()} 
+				<Modal
+					open={this.state.open}
+					onClose={() => this.onCloseModal()}
 					center
 					classNames={{
 						modal: 'modal-content',
-						closeButton: 'modal-close'
-					}}
-					>
+						closeButton: 'modal-close',
+					}}>
 					<h2>Edit post</h2>
-			          <form className="edit-post-form" onSubmit={e => this.handleEditSubmit(e, id)}>
+					<form
+						className="edit-post-form"
+						onSubmit={e => this.handleEditSubmit(e, id)}>
 						<label htmlFor="title">Title: </label>
 						<input
 							type="text"
@@ -110,7 +113,7 @@ class Card extends Component {
 							Submit
 						</button>
 					</form>
-		        </Modal>
+				</Modal>
 				<div className="actions">
 					<Link to={`/${category}/${id}`}>
 						<TiTabsOutline />

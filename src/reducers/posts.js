@@ -5,7 +5,7 @@ import {
 	EDIT_POST,
 	VOTE_POST,
 	DECREMENT_COMMENTS,
-	INCREMENT_COMMENTS
+	INCREMENT_COMMENTS,
 } from '../actions/posts';
 
 export default function (state = [], action) {
@@ -20,23 +20,33 @@ export default function (state = [], action) {
 				},
 			];
 		case EDIT_POST:
-			return state.map(post => post.id === action.editedPost.id
-	        ?  {...post, ...action.editedPost }
-	        : post);
+			return state.map(
+				post =>
+					post.id === action.editedPost.id
+						? { ...post, ...action.editedPost }
+						: post,
+			);
 		case DELETE_POST:
 			return state.filter(post => post.id !== action.id);
 		case VOTE_POST:
 			return state.map(
-        		(post) => post.id === action.post.id ? action.post : post );
-        case DECREMENT_COMMENTS:
-	      return state.map(post => post.id === action.postId
-	        ?  {...post, commentCount: post.commentCount - 1}
-	        : post);
-	
-	    case INCREMENT_COMMENTS:
-	      return state.map(post => post.id === action.postId
-	        ?  {...post, commentCount: post.commentCount + 1}
-	        : post);
+				post => (post.id === action.post.id ? action.post : post),
+			);
+		case DECREMENT_COMMENTS:
+			return state.map(
+				post =>
+					post.id === action.postId
+						? { ...post, commentCount: post.commentCount - 1 }
+						: post,
+			);
+
+		case INCREMENT_COMMENTS:
+			return state.map(
+				post =>
+					post.id === action.postId
+						? { ...post, commentCount: post.commentCount + 1 }
+						: post,
+			);
 		default:
 			return state;
 	}
