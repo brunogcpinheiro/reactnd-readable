@@ -13,7 +13,7 @@ import { decrementComments } from '../actions/posts';
 export class Comment extends Component {
 	state = {
 		open: false,
-		body: '',
+		body: this.props.comment.body,
 	};
 
 	handleEditSubmit = (e, id) => {
@@ -33,7 +33,6 @@ export class Comment extends Component {
 
 		this.setState({
 			open: false,
-			body: '',
 		});
 	};
 
@@ -78,7 +77,7 @@ export class Comment extends Component {
 							type="text"
 							placeholder="Edit the comment body..."
 							id="body"
-							value={this.state.bodyComment}
+							value={this.state.body}
 							onChange={e => this.setState({ body: e.target.value })}
 						/>
 						<button type="submit" className="edit-btn-submit">
