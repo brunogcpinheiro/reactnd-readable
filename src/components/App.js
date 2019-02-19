@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Nav from './Nav';
 import Dashboard from './Dashboard';
@@ -14,9 +14,11 @@ class App extends Component {
 				<div className="container">
 					<LoadingBar style={{backgroundColor: '#ffd32a', height: '5px'}} />
 					<div>
-						<h1 className="title">
-							Read<span>able</span>
-						</h1>
+						<Link to="/">
+							<h1 className="title">
+								Read<span>able</span>
+							</h1>
+						</Link>
 						<Nav />
 						<div>
 							<Switch>
