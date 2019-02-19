@@ -16,7 +16,7 @@ class Nav extends Component {
 					{this.props.categories.length > 0 ? (
 						this.props.categories.map(category => (
 							<li key={category.name}>
-								<NavLink exact to={`${category.path}`} activeClassName="active">
+								<NavLink exact to={`/${category.path}`} activeClassName="active">
 									{category.name}
 								</NavLink>
 							</li>

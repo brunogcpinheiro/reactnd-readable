@@ -425,3 +425,11 @@ button:hover {
 .model-content input {
 	width: 100%;
 }
+
+.not-found {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 20px;
+	color: #ffd32a;
+}

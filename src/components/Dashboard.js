@@ -54,7 +54,7 @@ class Dashboard extends Component {
 				<a href="#new" className="new-post-btn">
 					New Post
 				</a>
-				<PostsList posts={this.props.posts} sortType={this.state.sortType} />
+				<PostsList sortType={this.state.sortType} />
 				<div id="new">
 					<NewPost />
 				</div>

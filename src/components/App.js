@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Nav from './Nav';
 import Dashboard from './Dashboard';
-import NewPost from './NewPost';
 import PostPage from './PostPage';
+import NotFound from './NotFound';
 import LoadingBar from 'react-redux-loading-bar';
 
 class App extends Component {
@@ -19,10 +19,13 @@ class App extends Component {
 						</h1>
 						<Nav />
 						<div>
-							<Route exact path="/" component={Dashboard} />
-							<Route exact path="/:category" component={Dashboard} />
-							<Route path="/:category/:id" component={PostPage} />
-							<Route path="/new" component={NewPost} />
+							<Switch>
+								<Route exact path="/" component={Dashboard} />
+								<Route exact path="/:category" component={Dashboard} />
+								{this.props.posts.length !== 0 ? (
+									<Route path="/:category/:id" component={PostPage} />
+								) : <Route component={NotFound} />}
+							</Switch>
 						</div>
 					</div>
 				</div>
@@ -31,4 +34,10 @@ class App extends Component {
 	}
 }
 
-export default connect()(App);
+function mapStateToProps ({ posts }) {
+	return {
+		posts
+	};
+}
+
+export default connect(mapStateToProps)(App);

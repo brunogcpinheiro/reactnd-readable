@@ -10,7 +10,7 @@ class PostsList extends Component {
 					this.props.orderedPosts.map(post => (
 						<Post key={post.id} post={post} />
 					))
-				) : null}
+				) : <h4>No posts here. Add one! =)</h4>}
 			</div>
 		);
 	}
