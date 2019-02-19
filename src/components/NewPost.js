@@ -6,7 +6,7 @@ class NewPost extends Component {
 	state = {
 		title: '',
 		author: '',
-		category: '',
+		category: 'react',
 		body: '',
 	};
 
@@ -24,7 +24,7 @@ class NewPost extends Component {
 		};
 		
 		if (title && author && category && body !== '') {
-			this.props.dispatch(handleCreatePosts(newPost));	
+			this.props.dispatch(handleCreatePosts(newPost));
 		} else {
 			alert('Fill in all the fields!');
 		}
@@ -32,7 +32,7 @@ class NewPost extends Component {
 		this.setState({
 			title: '',
 			author: '',
-			category: '',
+			category: 'react',
 			body: '',
 		});
 	};

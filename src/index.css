@@ -64,6 +64,14 @@ small {
 	color: #a87ee5;
 }
 
+.all {
+	margin-bottom: -50px;
+}
+
+.all:hover {
+	text-decoration: underline;
+}
+
 .active {
 	background: #ffd32a;
 	color: #130f40;

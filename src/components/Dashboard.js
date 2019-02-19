@@ -56,7 +56,7 @@ class Dashboard extends Component {
 				</a>
 				<PostsList sortType={this.state.sortType} />
 				<div id="new">
-					<NewPost />
+					<NewPost category={this.props.category}/>
 				</div>
 			</Fragment>
 		);
