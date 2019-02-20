@@ -19,9 +19,6 @@ class App extends Component {
 								Read<span>able</span>
 							</h1>
 						</Link>
-						<Link to="/">
-							<h4 className="all">all posts</h4>
-						</Link>
 						<Nav />
 						<div>
 							<Switch>
