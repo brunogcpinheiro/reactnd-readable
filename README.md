@@ -1,6 +1,6 @@
 ## Install the Server
 
-Clone the server repository on: [https://github.com/brunogcpinheiro/reactnd-project-readable-starter.git](https://github.com/brunogcpinheiro/reactnd-project-readable-starter.git)
+Clone the server repository on: [https://github.com/brunogcpinheiro/readable-api](https://github.com/brunogcpinheiro/readable-api.git)
 
 Follow the instructions to start the server!
 
